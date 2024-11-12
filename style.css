@@ -5,3 +5,128 @@
  * Text Domain:	   hello-elementor-child
  * Description:    Hello Elementor is a lightweight and minimalist WordPress theme that was built specifically to work seamlessly with the Elementor site builder plugin. The theme is free, open-source, and designed for users who want a flexible, easy-to-use, and customizable website. The theme, which is optimized for performance, provides a solid foundation for users to build their own unique designs using the Elementor drag-and-drop site builder. Its simplicity and flexibility make it a great choice for both beginners and experienced Web Creators.
  */
+
+
+
+ :root {
+    --main-bg-color: #ECE2DA;
+    --main-title-color: #3B8E46;
+    --main-text-color: #000000;
+    --header-bg-color: #ffffff;
+    --footer-bg-color: #ffffff;
+    --main-btn-color: #dc9f96;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: 'Syne', sans-serif;
+}
+
+h1, h2, h3 {
+    color: var(--main-title-color);
+}
+
+
+
+
+header {
+    background-color: var(--header-bg-color);
+}
+
+.header-inner {
+	display: flex;
+	align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+	
+}
+
+.custom-logo {
+    width: 200px;
+}
+
+.site-branding {
+	display: flex;
+	align-items: center;
+    margin: 10px;
+}
+
+.site-header {
+    display: flex;
+    padding-block-start: 0rem;
+    padding-block-end: 0rem;
+    height: 60px;
+    align-items: center;
+}
+
+.custom-menu-links {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+    height: 100%;
+}
+
+.custom-menu-links a {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+	text-decoration: none;
+	color: #333;
+	font-weight: 500;
+    height: 100%;
+}
+
+.custom-menu-links .order-button {
+	background-color: var(--main-btn-color); /* Couleur de fond personnalisée */
+	color: #fff;
+	padding: 8px 15px;
+	font-weight: 700;
+}
+
+.custom-menu-links .order-button:hover {
+	background-color: #e65c00; /* Couleur de fond au survol */
+}
+
+
+
+
+
+footer {
+    background-color: var(--footer-bg-color);
+}
+
+.site-footer {
+    padding-block-start: 0rem;
+}
+
+.site-footer .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-footer .legal-link {
+    margin-top: 15px;
+    text-align: center;
+    width: 100%; /* Pour occuper la largeur complète */
+}
+
+.site-footer .legal-link a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.site-footer .legal-link a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+
+
+@media (min-width: 992px) {
+    .page-header .entry-title, .site-footer .footer-inner, .site-footer:not(.dynamic-footer), .site-header .header-inner, .site-header:not(.dynamic-header), body:not([class*=elementor-page-]) .site-main {
+        max-width: 100%;
+    }
+}
