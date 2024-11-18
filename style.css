@@ -9,7 +9,7 @@
 
 
  :root {
-    --main-bg-color: #ECE2DA;
+    --main-bg-color: #ffffff; /*#ECE2DA;*/
     --main-title-color: #3B8E46;
     --main-text-color: #000000;
     --header-bg-color: #ffffff;
@@ -31,6 +31,10 @@ h1, h2, h3 {
 
 header {
     background-color: var(--header-bg-color);
+}
+
+h1.entry-title {
+    display: none;
 }
 
 .header-inner {
@@ -56,7 +60,7 @@ header {
     display: flex;
     padding-block-start: 0rem;
     padding-block-end: 0rem;
-    height: 60px;
+    height: 80px;
     align-items: center;
 }
 
@@ -129,4 +133,88 @@ footer {
     .page-header .entry-title, .site-footer .footer-inner, .site-footer:not(.dynamic-footer), .site-header .header-inner, .site-header:not(.dynamic-header), body:not([class*=elementor-page-]) .site-main {
         max-width: 100%;
     }
+}
+
+
+
+/*Blocs spécifiques*/
+
+/*Rectangle Home 1*/
+.elementor-37 .elementor-element.elementor-element-ae0c72d {
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+}
+
+/*Rectangle Home 2*/
+.elementor-37 .elementor-element.elementor-element-ebfc549 {
+    border-bottom-left-radius: 50% 5%;
+    border-bottom-right-radius: 50% 5%;
+}
+
+/*Rectangle Nous contacter 1*/
+.elementor-39 .elementor-element.elementor-element-4bfcd01 {
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%; 
+}
+
+
+/*Formulaire Commander*/
+
+/* Regrouper les champs de type number en ligne */
+.wpcf7-form p:nth-child(1),
+.wpcf7-form p:nth-child(2),
+.wpcf7-form p:nth-child(3),
+.wpcf7-form p:nth-child(4) {
+    display: inline-block; /* Aligner horizontalement */
+    margin-right: 10px; /* Espacement entre les champs */
+    margin-bottom: 20px; /* Espacement sous les nombres */
+    width: auto; /* S'assurer que la largeur reste ajustée */
+}
+
+.wpcf7-form-control.wpcf7-number {
+    width: 60px; /* Largeur réduite pour les nombres */
+    text-align: center; /* Centrer les chiffres */
+}
+
+/* Appliquer la grille aux autres champs */
+.wpcf7-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes */
+    column-gap: 20px; /* Espacement entre colonnes */
+    row-gap: 15px; /* Espacement entre lignes */
+    max-width: 800px; /* Largeur maximale de la grille */
+    margin: 0 auto; /* Centrer la grille */
+}
+
+/* Champs texte attribués aux colonnes */
+.wpcf7-form p:nth-child(5), /* Nom */
+.wpcf7-form p:nth-child(6), /* Prénom */
+.wpcf7-form p:nth-child(7) { /* E-mail */
+    grid-column: 1; /* Colonne gauche */
+}
+
+.wpcf7-form p:nth-child(8), /* Adresse */
+.wpcf7-form p:nth-child(9), /* Code postal */
+.wpcf7-form p:nth-child(10) { /* Ville */
+    grid-column: 2; /* Colonne droite */
+}
+
+/* Styling général des champs */
+.wpcf7-form input {
+    box-sizing: border-box; /* Inclure les marges dans la largeur */
+    padding: 10px; /* Espacement interne */
+    width: 100%; /* S'assurer que les champs remplissent leur conteneur */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
+}
+
+.wpcf7-form input:focus {
+    border-color: #007bff; /* Couleur de focus */
+    outline: none;
+}
+
+/* Centrer le bouton de soumission */
+.wpcf7-form p:last-child {
+    grid-column: span 2; /* Étendre sur les deux colonnes */
+    text-align: center; /* Centrer le bouton */
 }
