@@ -43,10 +43,21 @@ $header_class = did_action( 'elementor/loaded' ) ? hello_get_header_layout_class
 		</div>
 
 		<!-- Section des liens de navigation à droite -->
-		<div class="custom-menu-links">
-			<a href="<?php echo esc_url( home_url( '/nous-rencontrer' ) ); ?>"><?php esc_html_e( 'Nous rencontrer', 'hello-elementor' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/admin' ) ); ?>"><?php esc_html_e( 'Admin', 'hello-elementor' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/commander' ) ); ?>" class="order-button"><?php esc_html_e( 'Commander', 'hello-elementor' ); ?></a>
+		<!-- Menu Responsive -->
+		<div class="custom-menu-container">
+			<button class="menu-toggle" aria-label="Menu">
+				&#9776; <!-- Icône burger -->
+			</button>
+			<div class="custom-menu-links">
+				<a href="http://planty.local/nous-rencontrer">Nous rencontrer</a>
+				<?php
+				wp_nav_menu(array(
+					'theme_location' => 'primary',
+					'menu_class'     => 'menu',
+				));
+				?>
+				<a href="http://planty.local/commander" class="order-button">Commander</a>
+			</div>
 		</div>
 	</div>
 </header>

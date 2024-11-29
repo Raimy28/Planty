@@ -26,7 +26,17 @@ h1, h2, h3 {
     color: var(--main-title-color);
 }
 
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 2rem;
+    }
+}
 
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+}
 
 
 header {
@@ -60,25 +70,67 @@ h1.entry-title {
     display: flex;
     padding-block-start: 0rem;
     padding-block-end: 0rem;
-    height: 80px;
+    min-height: 80px; /* Une hauteur minimale pour le header */
+    height: auto; /* Permet au header de s'adapter à son contenu */
     align-items: center;
+    overflow: visible;
+}
+
+/* Container principal pour gérer les deux modes */
+.custom-menu-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center; /* Centrer verticalement les enfants */
+    justify-content: space-between; /* Espacer les éléments horizontalement */
+    height: 100%; /* Prend toute la hauteur de son parent */
+  }
+
+/* Icône burger pour petits écrans */
+.menu-toggle {
+    display: none;
+    position: relative; /* Fixer sa position par rapport à son conteneur */
+    z-index: 1001; /* S'assurer qu'il est au-dessus du menu */
+    margin: 0; /* Retirez toute marge qui pourrait décaler sa position */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Menu en mode mobile (masqué par défaut) */
+.custom-menu-links.mobile {
+    display: none;
+    flex-direction: column; /* Empilement vertical */
+    position: absolute;
+    top: 100%; /* Sous le header */
+    right: 0;
+    background-color: #fff; /* Fond blanc */
+    width: 100%; /* Pleine largeur */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour séparation */
+    padding: 20px;
+    gap: 10px;
+    z-index: 1000;
 }
 
 .custom-menu-links {
+    position: relative;
 	display: flex;
 	gap: 20px;
 	align-items: center;
     height: 100%;
+    width: 100%; /* Empêche les alignements inattendus */
 }
 
 .custom-menu-links a {
     display: flex;
     align-items: center;
+    height: 80px;
     padding: 0 20px;
 	text-decoration: none;
 	color: #333;
 	font-weight: 500;
-    height: 100%;
+    
 }
 
 .custom-menu-links .order-button {
@@ -92,7 +144,46 @@ h1.entry-title {
 	background-color: #e65c00; /* Couleur de fond au survol */
 }
 
+.admin-link {
+    list-style-type: none; /* Supprime les puces uniquement pour Admin */
+}
 
+.admin-link a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Hérite de la couleur du menu */
+}
+
+
+.custom-menu-links.mobile.open {
+    display: flex !important;
+    max-height: 500px; /* Ajustez selon le nombre d'éléments du menu */
+}
+
+/* Afficher le bouton burger en mobile uniquement */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .custom-menu-links {
+        display: none; /* Masquer les liens du menu en mode mobile */
+    }
+
+    .custom-menu-links.open {
+        display: block; /* Afficher les liens quand le menu est ouvert */
+    }
+}
+
+/* Mode desktop : toujours afficher le menu */
+@media (min-width: 769px) {
+    .custom-menu-links {
+        display: flex; /* Menu toujours visible */
+    }
+
+    .menu-toggle {
+        display: none; /* Cacher le bouton burger */
+    }
+}
 
 
 
@@ -160,61 +251,106 @@ footer {
 
 /*Formulaire Commander*/
 
-/* Regrouper les champs de type number en ligne */
-.wpcf7-form p:nth-child(1),
-.wpcf7-form p:nth-child(2),
-.wpcf7-form p:nth-child(3),
-.wpcf7-form p:nth-child(4) {
-    display: inline-block; /* Aligner horizontalement */
-    margin-right: 10px; /* Espacement entre les champs */
-    margin-bottom: 20px; /* Espacement sous les nombres */
-    width: auto; /* S'assurer que la largeur reste ajustée */
+/*Champs des nombres*/
+
+input[type=number] {
+    width: 60px;
 }
 
-.wpcf7-form-control.wpcf7-number {
-    width: 60px; /* Largeur réduite pour les nombres */
-    text-align: center; /* Centrer les chiffres */
+.label-command {
+    color: white;
+}
+.grid-number {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 150px;
+    align-items: center;           /* Centre verticalement les éléments */
+    width: 100%;                   /* Occupe toute la largeur de l’écran */
+    box-sizing: border-box;        /* Inclut le padding dans la largeur totale */
 }
 
-/* Appliquer la grille aux autres champs */
-.wpcf7-form {
+.grid-number > p > span {
+    text-align: center;            /* Centrer le texte dans chaque élément */
+    padding: 10px 20px;            /* Ajoute de l’espace intérieur */
+    flex: 1;
+    width: 50px;                       /* Permet aux éléments de prendre une largeur égale */
+    margin: 0 75px;                /* Ajoute un espace entre les éléments */
+}
+
+/* Appliquer une grille pour structurer les champs */
+#wpcf7-f146-p41-o1 .grid-command {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Deux colonnes */
-    column-gap: 20px; /* Espacement entre colonnes */
-    row-gap: 15px; /* Espacement entre lignes */
-    max-width: 800px; /* Largeur maximale de la grille */
-    margin: 0 auto; /* Centrer la grille */
+    gap: 20px; /* Espacement entre les champs */
+    max-width: 800px; /* Largeur maximale */
+    margin: 0 auto; /* Centrer le formulaire */
 }
 
-/* Champs texte attribués aux colonnes */
-.wpcf7-form p:nth-child(5), /* Nom */
-.wpcf7-form p:nth-child(6), /* Prénom */
-.wpcf7-form p:nth-child(7) { /* E-mail */
+/* Placer les champs dans les colonnes */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(1), /* Nom */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(2), /* Prénom */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(3) { /* Email */
     grid-column: 1; /* Colonne gauche */
 }
 
-.wpcf7-form p:nth-child(8), /* Adresse */
-.wpcf7-form p:nth-child(9), /* Code postal */
-.wpcf7-form p:nth-child(10) { /* Ville */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(4), /* Adresse */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(5), /* Code postal */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(6) { /* Ville */
     grid-column: 2; /* Colonne droite */
 }
 
-/* Styling général des champs */
-.wpcf7-form input {
-    box-sizing: border-box; /* Inclure les marges dans la largeur */
-    padding: 10px; /* Espacement interne */
-    width: 100%; /* S'assurer que les champs remplissent leur conteneur */
-    border: 1px solid #ccc; /* Bordure légère */
-    border-radius: 4px; /* Coins arrondis */
+/* Aligner les champs verticalement dans chaque colonne */
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(1),
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(4) {
+    grid-row: 1;
 }
 
-.wpcf7-form input:focus {
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(2),
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(5) {
+    grid-row: 2;
+}
+
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(3),
+#wpcf7-f146-p41-o1 .grid-command p:nth-child(6) {
+    grid-row: 3;
+}
+
+
+/* Styling général pour les champs */
+#wpcf7-f146-p41-o1 .grid-command input {
+    width: 100%; /* Champs remplissent leur conteneur */
+    padding: 10px; /* Espacement interne */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
+    box-sizing: border-box; /* Inclure les marges et paddings */
+}
+
+/* Focus pour les champs */
+#wpcf7-f146-p41-o1 .grid-command input:focus {
     border-color: #007bff; /* Couleur de focus */
     outline: none;
 }
 
-/* Centrer le bouton de soumission */
-.wpcf7-form p:last-child {
-    grid-column: span 2; /* Étendre sur les deux colonnes */
-    text-align: center; /* Centrer le bouton */
+.submit-contact {
+    text-align: center;
+}
+
+.submit-contact > p > input {
+    background-color: #E0B9B4;
+    color: white;
+    width: 200px;
+    margin-left: 75px;
+    border: none;
+}
+
+.submit-commander {
+    text-align: center;
+}
+
+.submit-commander > p > input {
+    background-color: #E0B9B4;
+    color: white;
+    width: 200px;
+    margin-left: 50px;
+    border: none;
 }
