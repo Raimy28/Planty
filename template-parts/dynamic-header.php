@@ -49,14 +49,14 @@ $header_class = did_action( 'elementor/loaded' ) ? hello_get_header_layout_class
 				&#9776; <!-- Icône burger -->
 			</button>
 			<div class="custom-menu-links">
-				<a href="http://planty.local/nous-rencontrer">Nous rencontrer</a>
+				<a href="/nous-rencontrer">Nous rencontrer</a>
 				<?php
 				wp_nav_menu(array(
 					'theme_location' => 'primary',
 					'menu_class'     => 'menu',
 				));
 				?>
-				<a href="http://planty.local/commander" class="order-button">Commander</a>
+				<a href="/commander" class="order-button">Commander</a>
 			</div>
 		</div>
 	</div>

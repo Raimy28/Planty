@@ -186,6 +186,12 @@ h1.entry-title {
 }
 
 
+/* Element à cacher pour responsive*/
+@media (max-width: 1440px) {
+    .feuillage{
+        display: none;
+    }
+}
 
 footer {
     background-color: var(--footer-bg-color);
@@ -273,7 +279,7 @@ input[type=number] {
     text-align: center;            /* Centrer le texte dans chaque élément */
     padding: 10px 20px;            /* Ajoute de l’espace intérieur */
     flex: 1;
-    width: 50px;                       /* Permet aux éléments de prendre une largeur égale */
+    width: 50px;                   /* Permet aux éléments de prendre une largeur égale */
     margin: 0 75px;                /* Ajoute un espace entre les éléments */
 }
 
